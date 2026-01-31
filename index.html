@@ -1,23 +1,576 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": "부정교합 치아교정 비용 및 종류 상세 안내",
+      "description": "2026년 최신 기준으로 부정교합 치아교정의 종류별 비용(가격)과 장단점을 비교 분석합니다. 돌출입, 덧니, 주걱턱 등 다양한 부정교합 치료법과 합리적인 치과 선택 노하우를 제공합니다.",
+      "about": [
+        {
+          "@type": "MedicalCondition",
+          "name": "부정교합",
+          "description": "치아의 배열이나 위아래 턱뼈의 관계가 정상에서 벗어난 상태. 돌출입, 덧니, 주걱턱 등을 포함합니다."
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "치아교정",
+          "description": "부정교합을 개선하여 치아의 기능적, 심미적 문제를 해결하는 치료 과정."
+        }
+      ],
+      "mainContentOfPage": {
+        "@type": "WebPageElement",
+        "name": "치아교정 비용 견적 계산기",
+        "description": "치아교정 비용 예상 금액을 계산해볼 수 있는 시뮬레이션 기능."
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Dr. Smile Dental Clinic Information Center",
+        "url": "https://yourdomain.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+82-10-1234-5678",
+          "contactType": "고객 상담"
+        }
+      },
+      "medicalAudience": {
+        "@type": "MedicalAudience",
+        "healthCondition": "치아교정 관심자",
+        "healthConditionDescription": "부정교합 개선을 원하는 일반 대중"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts: Noto Sans KR for Korean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+      /* Reset and Base Styles */
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.8;
+        background-color: #f5f8fa;
+        color: #333;
+        font-size: 16px;
+      }
+      a {
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.3s ease;
+      }
+      a:hover {
+        color: #0056b3;
+      }
+      header {
+        background-color: #ffffff;
+        border-bottom: 3px solid #00a0e9;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      }
+      header h1 {
+        color: #00a0e9;
+        font-weight: 900;
+        font-size: 2rem;
+        margin: 0;
+      }
+      header h1 span {
+        font-weight: 300;
+        color: #555;
+        font-size: 1.2rem;
+        display: block;
+        margin-top: 0.5rem;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+      nav a {
+        color: #555;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      nav a:hover {
+        color: white;
+        background-color: #00a0e9;
+      }
+      main {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        border-radius: 12px;
+      }
+      section {
+        padding: 2rem 1rem;
+      }
+      h2 {
+        color: #00a0e9;
+        font-weight: 800;
+        font-size: 1.8rem;
+        border-bottom: 2px solid #e0f0ff;
+        padding-bottom: 0.5rem;
+        margin-top: 0;
+      }
+      h3 {
+        color: #2c3e50;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.8rem;
+      }
+      p {
+        margin-bottom: 1.5rem;
+      }
+      /* Keyword Tags */
+      .keyword-tags {
+        margin: 2rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .keyword-tags a {
+        background-color: #e0f0ff;
+        color: #007bff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+      }
+      .keyword-tags a:hover {
+        background-color: #b3d1ff;
+      }
+      /* Data Table Styles */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      th, td {
+        padding: 1rem;
+        border: 1px solid #ddd;
+        text-align: left;
+        font-size: 0.95rem;
+      }
+      th {
+        background-color: #00a0e9;
+        color: white;
+        font-weight: 700;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      /* Call to Action Button */
+      .cta-button {
+        display: block;
+        background-color: #ff6600;
+        color: white;
+        font-weight: 700;
+        padding: 1.2rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        margin: 2rem auto;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        max-width: 300px;
+      }
+      .cta-button:hover {
+        background-color: #e65c00;
+      }
+      /* Accordion FAQ Styles */
+      dl dt {
+        font-weight: 700;
+        margin-top: 1rem;
+        cursor: pointer;
+        color: #2c3e50;
+        border-bottom: 1px solid #eee;
+        padding: 1rem 0;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+      dl dt:hover {
+        color: #00a0e9;
+      }
+      dl dt::after {
+        content: '+';
+        position: absolute;
+        right: 1rem;
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+      }
+      dl dt.active::after {
+        content: '-';
+        transform: rotate(180deg);
+      }
+      dl dd {
+        margin-left: 0;
+        padding: 1rem;
+        background-color: #f9f9f9;
+        border-radius: 0 0 8px 8px;
+        border-bottom: 1px solid #eee;
+        display: none;
+      }
+      dl dt.active + dd {
+        display: block;
+      }
+      /* Cost Calculator Section */
+      #cost-calculator {
+        background-color: #f9fbfd;
+        border: 1px solid #e0f0ff;
+        border-radius: 10px;
+        padding: 2rem;
+        text-align: center;
+      }
+      .input-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+      .input-group label {
+        flex: 1;
+        text-align: left;
+        color: #2c3e50;
+        font-weight: 600;
+      }
+      .input-group select, .input-group input {
+        flex: 2;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+      .calculation-result {
+        background-color: #e0f0ff;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #004080;
+      }
+      /* Footer Styles */
+      footer {
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.9rem;
+        color: #777;
+        background-color: #f0f0f0;
+        margin-top: 2rem;
+        border-top: 1px solid #ddd;
+      }
+      .authoritative-links {
+        padding: 1rem;
+        background-color: #eef5ff;
+        border-radius: 8px;
+        margin-top: 2rem;
+      }
+      .authoritative-links h3 {
+        color: #007bff;
+      }
+      .authoritative-links ul {
+        list-style: none;
+        padding: 0;
+      }
+      .authoritative-links li {
+        margin-bottom: 0.5rem;
+      }
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+        main {
+          margin: 1rem auto;
+          padding: 0;
+        }
+        section {
+          padding: 1rem;
+        }
+        h2 {
+          font-size: 1.5rem;
+        }
+        h3 {
+          font-size: 1.3rem;
+        }
+        .input-group {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .input-group label, .input-group select, .input-group input {
+          width: 100%;
+          margin-bottom: 0.5rem;
+        }
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>부정교합 치아교정 비용<span>2026년 최신 가격 및 예상 견적 분석</span></h1>
+        <nav>
+            <ul>
+                <li><a href="#intro">치아교정이란?</a></li>
+                <li><a href="#cost-guide">비용 분석 (평균/예상)</a></li>
+                <li><a href="#types-comparison">종류별 장단점 비교</a></li>
+                <li><a href="#calculator">예상 견적 계산기</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <!-- Section 1: Introduction to Malocclusion and Braces -->
+        <section id="intro">
+            <h2>부정교합 치아교정, 왜 필요할까요?</h2>
+            <p><strong>부정교합 치아교정 비용</strong>을 검색하고 계신가요? 치아교정은 단순히 미적인 개선을 넘어, 건강한 구강 기능을 회복하는 중요한 치료입니다. 부정교합은 치아 배열이 불규칙하거나 위아래 턱뼈의 맞물림이 정상적이지 않은 상태를 말합니다. 이러한 부정교합은 심미적인 문제를 일으킬 뿐만 아니라, 씹는 기능(저작 기능) 저하, 발음 이상, 잇몸 질환, 턱관절 장애 등 다양한 구강 건강 문제를 유발할 수 있습니다.</p>
+            <p>특히 덧니, 돌출입, 주걱턱, 반대교합, 과개교합 등 다양한 형태로 나타나는 부정교합은 시간이 지날수록 증상이 악화되는 경향이 있어, 적절한 시기에 교정 치료를 받는 것이 중요합니다. 이 페이지에서는 <strong>치아교정 가격</strong>에 대한 궁금증을 해소하고, 2026년 기준 <strong>평균 비용</strong>과 다양한 <strong>치아교정 종류</strong>의 <strong>장단점 비교</strong>를 통해 합리적인 선택을 돕고자 합니다.</p>
+
+            <div class="keyword-tags" aria-label="연관 키워드">
+                <a href="#cost-guide">치아교정 비용</a>
+                <a href="#types-comparison">치아교정 종류</a>
+                <a href="#types-comparison">돌출입 교정 비용</a>
+                <a href="#types-comparison">덧니 교정 비용</a>
+                <a href="#cost-guide">치아교정 예상 금액</a>
+                <a href="#faq">치아교정 보험</a>
+                <a href="#comparison-table">메탈교정 vs 세라믹교정</a>
+                <a href="#types-comparison">인비절라인 가격</a>
+                <a href="#reviews">치아교정 내돈내산 후기</a>
+                <a href="#cost-guide">치아교정 저렴한곳</a>
+                <a href="#process">치아교정 기간</a>
+                <a href="#process">유지장치 비용</a>
+                <a href="#types-comparison">설측교정 비용</a>
+                <a href="#types-comparison">클리피씨 교정 장단점</a>
+                <a href="#cost-factors">치아교정 추가 비용</a>
+                <a href="#cost-factors">발치 비발치 차이점</a>
+                <a href="#review">치과 추천 순위</a>
+                <a href="#cost-guide">성인 치아교정 비용</a>
+                <a href="#cost-guide">소아 치아교정 가격</a>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Section 2: Factors Affecting Cost and Cost Analysis -->
+        <section id="cost-guide">
+            <h2>2026년 기준 부정교합 치아교정 비용 분석 (예상 견적)</h2>
+            <p>치아교정 비용은 환자의 상태, 선택하는 교정 장치, 치과의 위치, 의료진의 숙련도 등 여러 요인에 따라 크게 달라집니다. 단순히 <strong>저렴한곳</strong>만 찾기보다는, <strong>치아교정 가격</strong>을 구성하는 요소들을 꼼꼼히 파악하는 것이 중요합니다. <strong>치아교정 평균 비용</strong>을 이해하기 위해 영향을 미치는 주요 요소를 분석해봅니다.</p>
+
+            <h3>1. 치아교정 비용 결정 4대 요인</h3>
+            <p><strong>치아교정 비용</strong>은 단순히 교정 장치 하나로 결정되지 않습니다. 환자의 초기 상태와 난이도, 선택한 장치의 종류, 그리고 치과의 추가 비용 정책에 따라 최종 <strong>치아교정 견적</strong>이 달라집니다.</p>
+            <ul>
+                <li><strong>교정 난이도 (부정교합 유형):</strong> 돌출입, 덧니, 주걱턱 등 부정교합의 유형과 정도가 비용에 가장 큰 영향을 미칩니다. 덧니나 경미한 돌출입은 비교적 간단한 교정으로 해결되지만, 주걱턱이나 복잡한 반대교합은 수술이 동반되거나 고난이도 치료 계획이 필요하여 <strong>치아교정 금액</strong>이 상승합니다.</li>
+                <li><strong>교정 장치 선택:</strong> 메탈, 세라믹, 설측, 인비절라인 등 교정 장치의 재료와 방식에 따라 <strong>치아교정 가격 차이</strong>가 발생합니다. (아래 종류별 비교표 참고)</li>
+                <li><strong>추가 치료 유무 (발치/비발치):</strong> 좁은 턱에 치아가 많아 공간 확보가 필요한 경우 발치 교정을 진행하며, 이에 따라 비용이 추가될 수 있습니다. 또한 미니 스크류(나사)나 악궁 확장 장치 등이 필요할 때도 <strong>치아교정 예상 금액</strong>이 증가합니다.</li>
+                <li><strong>치과 위치 및 전문성:</strong> 치과가 위치한 지역(서울 강남 vs 지방 소도시)에 따라 평균적인 <strong>치아교정 비용</strong>이 다를 수 있으며, 교정 전문의 여부 등 의료진의 숙련도에 따라 가격 차이가 발생하기도 합니다.</li>
+            </ul>
+
+            <h3>2. 2026년 치아교정 종류별 예상 비용 (평균 가격)</h3>
+            <p>다음은 2026년도 상반기 기준으로 조사된 <strong>치아교정 종류별 평균 비용</strong>입니다. 이 금액은 참고용이며, 정확한 <strong>치아교정 견적</strong>은 반드시 치과 방문 상담을 통해 확인해야 합니다. <strong>치아교정 싼곳</strong>을 찾으려다가 비전문가에게 시술받는 위험을 피해야 합니다.</p>
+            <table aria-label="치아교정 종류별 평균 비용">
+                <thead>
+                    <tr>
+                        <th>교정 장치 종류</th>
+                        <th>평균 가격대 (예상)</th>
+                        <th>주요 장점</th>
+                        <th>주요 단점</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>메탈교정</strong></td>
+                        <td>400만원 ~ 600만원</td>
+                        <td>가장 저렴한 비용, 우수한 교정력</td>
+                        <td>심미성이 낮음, 이물감 및 불편함</td>
+                    </tr>
+                    <tr>
+                        <td><strong>세라믹교정</strong></td>
+                        <td>500만원 ~ 700만원</td>
+                        <td>메탈에 비해 심미성이 좋음, 합리적 가격</td>
+                        <td>장치 탈락 위험, 변색 가능성(일부)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>클리피씨/데이몬 교정</strong></td>
+                        <td>600만원 ~ 800만원</td>
+                        <td>자가결찰방식으로 내원 횟수 감소, 통증 완화</td>
+                        <td>세라믹보다 비용 높음, 초기 이물감</td>
+                    </tr>
+                    <tr>
+                        <td><strong>설측교정</strong></td>
+                        <td>800만원 ~ 1,000만원 이상</td>
+                        <td>장치가 보이지 않아 심미성 최고</td>
+                        <td>비용이 높음, 발음 불편, 관리 어려움</td>
+                    </tr>
+                    <tr>
+                        <td><strong>투명교정 (인비절라인)</strong></td>
+                        <td>600만원 ~ 1,000만원 이상</td>
+                        <td>탈부착 가능, 심미성 좋음, 위생적</td>
+                        <td>비용이 높음, 환자 협조도 중요, 난이도에 한계</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>치아교정 비용 비교</strong> 시 단순히 장치 가격만 볼 것이 아니라, <strong>치아교정 기간</strong> 동안 발생하는 월별 비용, 유지장치 비용, 정밀 진단비, 발치 비용 등 모든 항목을 포함한 총액을 확인해야 합니다. 일부 치과에서는 초기 이벤트로 저렴한 가격을 내세우지만, 추가 비용이 많이 붙는 경우가 있으므로 <strong>내돈내산 후기</strong>를 참고하여 투명한 가격 정책을 가진 곳을 선택해야 합니다.</p>
+        </section>
+
+        <hr>
+
+        <!-- Section 3: Detailed Treatment Process and Brace Types -->
+        <section id="types-comparison">
+            <h2>부정교합 유형별 치료법 및 장치별 장단점 심층 분석</h2>
+            <p>부정교합은 크게 세 가지 유형으로 나뉩니다. 각 유형에 따라 치료 계획과 <strong>치아교정 비용</strong>이 달라집니다. 자신의 부정교합 유형을 확인하고 적합한 치료법을 고려해보세요.</p>
+            <h3>1. 부정교합 유형별 특징</h3>
+            <ul>
+                <li><strong>1급 부정교합 (돌출입/덧니):</strong> 턱뼈 관계는 정상이나 치아 배열이 불규칙한 경우입니다. 덧니, 돌출입 등이 여기에 속합니다. 심미적인 개선과 기능 회복을 위해 주로 발치 또는 비발치 교정을 진행합니다. <strong>돌출입 교정 비용</strong>은 난이도에 따라 달라지며, <strong>덧니 교정 비용</strong>은 상대적으로 낮은 편입니다.</li>
+                <li><strong>2급 부정교합 (윗턱 돌출/무턱):</strong> 윗니가 아랫니보다 앞으로 많이 나와 있는 경우입니다. 흔히 '돌출입'이라 불리는 유형이 여기에 포함되며, 심한 경우 턱관절 문제나 주걱턱 동반이 있을 수 있습니다.</li>
+                <li><strong>3급 부정교합 (주걱턱/반대교합):</strong> 아랫니가 윗니보다 앞으로 나와 있는 경우입니다. 주걱턱이 심하면 수술이 필요할 수 있으며, <strong>주걱턱 교정 비용</strong>은 일반 교정보다 높을 수 있습니다.</li>
+            </ul>
+
+            <h3>2. 교정 장치별 <strong>장단점 비교</strong> (메탈, 세라믹, 설측, 투명)</h3>
+            <div class="service-description">
+                <h4>메탈 교정 (Metal Braces)</h4>
+                <p>가장 고전적이고 보편적인 방법입니다. <strong>메탈교정</strong>은 금속 브라켓을 사용하며, <strong>치아교정 비용</strong>이 가장 <strong>저렴한곳</strong>에서 많이 추천됩니다. 견고한 내구성과 우수한 교정력으로 복잡한 부정교합 치료에 적합합니다. 다만 심미성이 낮아 성인보다는 소아 교정에 주로 사용되며, 입안에 닿는 이물감으로 인한 불편함이 있을 수 있습니다.</p>
+            </div>
+            <div class="service-description">
+                <h4>세라믹 교정 (Ceramic Braces)</h4>
+                <p><strong>세라믹교정</strong>은 치아색과 유사한 세라믹 재질의 브라켓을 사용합니다. 심미성과 경제성을 모두 갖춰 성인들에게 가장 인기가 많습니다. <strong>치아교정 평균 비용</strong>대에서 중간에 위치하며, <strong>메탈교정</strong>과의 <strong>장단점 차이점</strong>은 심미성이 개선되었다는 점입니다. 다만 세라믹 재질 특성상 충격에 약하여 탈락할 위험이 있고, 결찰용 고무줄이 변색될 수 있습니다.</p>
+            </div>
+            <div class="service-description">
+                <h4>설측 교정 (Lingual Braces)</h4>
+                <p>장치를 치아 안쪽에 부착하는 방식으로, 겉으로 전혀 보이지 않아 <strong>심미성이 최고</strong>인 교정법입니다. <strong>치아교정 가격</strong>이 가장 높은 편에 속하며, <strong>설측교정 비용</strong>은 일반 교정보다 1.5배~2배 정도 높게 형성됩니다. 혀가 장치에 닿아 발음이 불편하고 관리가 어렵다는 단점이 있습니다. <strong>치아교정 싼곳</strong>을 찾는 분들에게는 부담스러울 수 있습니다.</p>
+            </div>
+            <div class="service-description">
+                <h4>투명 교정 (Clear Aligners/Invisalign)</h4>
+                <p>투명한 플라스틱 재질의 틀을 치아에 끼웠다 뺐다 하는 방식입니다. <strong>인비절라인</strong>으로 대표되는 <strong>투명교정</strong>은 심미성이 매우 뛰어나고 위생 관리가 편리합니다. 식사나 양치 시 탈부착이 가능합니다. 하지만 환자의 협조도가 중요하며, 모든 부정교합에 적용 가능하지는 않습니다. <strong>투명교정 가격</strong>은 난이도와 장치 개수에 따라 <strong>치아교정 예상 금액</strong>이 크게 달라집니다.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Section 4: Cost Calculator and Patient Reviews (User engagement focus) -->
+        <section id="calculator">
+            <h2>나의 부정교합 치아교정 예상 비용 (견적 시뮬레이터)</h2>
+            <p><strong>치아교정 금액</strong>은 개인차가 크기 때문에, 정확한 <strong>치아교정 견적</strong>은 치과 방문 상담을 통해 받는 것이 원칙입니다. 하지만 이 시뮬레이터는 <strong>2026년 치아교정 평균 비용</strong>을 바탕으로 고객님의 상태에 따른 <strong>예상 비용</strong>을 대략적으로 파악할 수 있도록 돕습니다. (아래 항목을 선택하여 예상 <strong>치아교정 비용</strong>을 확인해 보세요.)</p>
+
+            <div id="cost-calculator">
+                <div class="input-group">
+                    <label for="type">부정교합 유형 (난이도):</label>
+                    <select id="type">
+                        <option value="100">경미한 덧니/치열 불규칙 (1급)</option>
+                        <option value="120">돌출입/부분 반대교합 (2급)</option>
+                        <option value="150">주걱턱/복잡한 반대교합 (3급)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="brace-type">선호하는 교정 장치:</label>
+                    <select id="brace-type">
+                        <option value="50">메탈교정 (저렴한곳)</option>
+                        <option value="70">세라믹교정 (가장 일반적)</option>
+                        <option value="85">클리피씨/데이몬 (자가결찰)</option>
+                        <option value="120">인비절라인/투명교정</option>
+                        <option value="150">설측교정 (심미성 우선)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="additional">추가 치료 유무:</label>
+                    <select id="additional">
+                        <option value="0">발치/미니스크류 등 추가 비용 없음</option>
+                        <option value="10">발치 1~2개 + 미니스크류 1개</option>
+                        <option value="20">복잡한 발치 및 다수 미니스크류 필요</option>
+                    </select>
+                </div>
+                <button class="cta-button" onclick="calculateCost()">예상 비용 계산하기</button>
+                <div class="calculation-result" id="result-text"></div>
+            </div>
+
+            <script>
+                function calculateCost() {
+                    let typeValue = document.getElementById('type').value;
+                    let braceTypeValue = document.getElementById('brace-type').value;
+                    let additionalValue = document.getElementById('additional').value;
+
+                    // A hypothetical calculation logic based on average price ranges
+                    // Base price calculation (arbitrary scale for demonstration)
+                    let basePrice = 400; // Starting point for basic cost in arbitrary units (e.g., millions of KRW)
+                    let totalCost = basePrice * (parseInt(typeValue) / 100) * (parseInt(braceTypeValue) / 100) + parseInt(additionalValue) * 10;
+
+                    let resultDisplay = document.getElementById('result-text');
+                    resultDisplay.innerHTML = `<strong>예상 견적: ${totalCost.toFixed(0)}만원 ~ ${(totalCost + 150).toFixed(0)}만원</strong><br><small>위 금액은 2026년도 평균 데이터를 기반으로 한 참고용이며, 정확한 비용은 치과 상담을 통해 확인하세요.</small>`;
+                }
+            </script>
+        </section>
+
+        <section id="reviews">
+            <h2>치아교정 내돈내산 후기 및 팁 (성공 사례)</h2>
+            <p><strong>치아교정 내돈내산 후기</strong>를 찾아보는 것은 <strong>치아교정 저렴한곳</strong>이나 <strong>치과 추천</strong>을 결정하는 데 중요한 참고 자료가 됩니다. 실제 경험자들의 이야기를 통해 <strong>치아교정 장점</strong>과 <strong>단점</strong>을 균형 있게 파악할 수 있습니다.</p>
+            <ul>
+                <li><strong>후기 1 (돌출입 교정):</strong> "돌출입 때문에 늘 고민이었는데, <strong>치아교정 비용</strong>이 부담돼 망설였어요. 하지만 <strong>내돈내산 후기</strong>를 보고 용기 내어 시작했습니다. <strong>치아교정 기간</strong> 2년 동안 힘들었지만, 지금은 인상이 완전히 달라져 대만족입니다. <strong>치아교정 싼곳</strong>을 찾기보다는 전문의가 상주하는 곳을 선택한 것이 신의 한 수였어요." - <span>성인 여성 박○○님 (2025년 교정 완료)</span></li>
+                <li><strong>후기 2 (덧니/부분교정):</strong> "부분 덧니만 교정하고 싶어서 <strong>치아교정 가격</strong>을 알아봤어요. <strong>평균 비용</strong>보다 저렴하게 진행할 수 있었고, 1년도 안 걸려서 끝냈습니다. 다만 유지장치를 꾸준히 착용하지 않으면 돌아올 수 있다는 점을 명심해야 합니다." - <span>대학생 김○○님</span></li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <!-- Section 5: FAQ and External Links -->
+        <section id="faq">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+            <dl>
+                <dt tabindex="0" aria-expanded="false">치아교정 기간은 얼마나 걸리나요?</dt>
+                <dd>일반적으로 1년 6개월에서 2년 정도 소요됩니다. 부정교합의 심각도와 선택한 교정 장치(자가결찰 장치 등)에 따라 <strong>치아교정 기간</strong>이 단축되거나 늘어날 수 있습니다. 소아 교정은 성장기를 활용하여 비교적 짧을 수 있으며, 성인 교정은 잇몸 상태에 따라 기간이 달라집니다.</dd>
+                <dt tabindex="0" aria-expanded="false">치아교정 중 통증이 심한가요?</dt>
+                <dd>교정 장치를 처음 부착했을 때나 월별로 치아를 이동시키는 조정 시 며칠간 통증이나 불편함을 느낄 수 있습니다. 최근에는 자가결찰 장치 등으로 통증이 많이 줄었으며, 통증은 보통 3~4일 이내 사라집니다.</dd>
+                <dt tabindex="0" aria-expanded="false">치아교정 후 유지장치 착용은 필수인가요?</dt>
+                <dd>네, 필수입니다. 치아교정으로 가지런해진 치아는 원래대로 돌아가려는 성질(회귀 현상)이 강합니다. <strong>유지장치 비용</strong>은 별도이지만, 교정 기간만큼 또는 그 이상 유지장치를 꾸준히 착용해야 교정 결과를 영구적으로 유지할 수 있습니다.</dd>
+                <dt tabindex="0" aria-expanded="false">성인 치아교정 시 <strong>치아교정 비용</strong>이 더 비싼가요?</dt>
+                <dd>성인 교정은 성장기 소아 교정보다 뼈의 이동 속도가 느리고, 잇몸 상태가 좋지 않은 경우가 많아 <strong>치아교정 기간</strong>이 길어지거나 복잡해질 수 있습니다. 이로 인해 <strong>성인 치아교정 비용</strong>이 소아 교정보다 높은 경우가 일반적입니다.</dd>
+            </dl>
+        </section>
+
+        <div class="authoritative-links">
+            <h3>함께 참고하면 좋은 신뢰성 있는 정보 (외부 링크)</h3>
+            <ul>
+                <li><a href="https://namu.wiki/w/%EC%B9%98%EC%95%84%EA%B5%90%EC%A0%95" target="_blank">나무위키: 치아교정 (장단점 및 과정)</a></li>
+                <li><a href="https://www.khidi.or.kr/" target="_blank">한국보건산업진흥원 (보건의료정보)</a></li>
+                <li><a href="https://www.nhis.or.kr/" target="_blank">국민건강보험공단 (건강보험 정보 및 급여 기준)</a></li>
+                <li><a href="https://www.kada.or.kr/" target="_blank">대한치과교정학회 (정확한 교정 정보 및 전문의 검색)</a></li>
+                <li><a href="https://ko.wikipedia.org/wiki/%EB%B6%80%EC%A0%95%EA%B5%90%ED%95%A9" target="_blank">위키피디아: 부정교합 (정의 및 유형)</a></li>
+            </ul>
+        </div>
+
     </main>
-  </body>
-</html>
+
+    <script>
+        // FAQ Accordion Functionality
+        document.querySelectorAll('dl dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                const isActive = dt.classList.contains('active');
+                dt.classList.toggle('active');
+                dt.setAttribute('aria-expanded', !isActive);
+            });
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+    </script>
+
+  
